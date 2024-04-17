@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chips chipVendor="NXP" family="LPC550x_S0x">
+   <chip name="LPC55S06" flash=""/>
+</chips>

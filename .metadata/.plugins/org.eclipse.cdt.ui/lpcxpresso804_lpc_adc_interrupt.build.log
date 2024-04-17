@@ -1,0 +1,25 @@
+12:10:28 **** Incremental Build of configuration Debug for project lpcxpresso804_lpc_adc_interrupt ****
+make -r -j8 all 
+Building file: ../source/test2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=gnu99 -D__REDLIB__ -DCPU_LPC804M101JDH24 -DCPU_LPC804M101JDH24_cm0plus -DCPU_LPC804 -DMCUXPRESSO_SDK -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -DSDK_OS_BAREMETAL -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\utilities" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\drivers" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\device" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\component\uart" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\CMSIS" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\component\timer" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\source" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\board" -I"E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\lpcxpresso804\driver_examples\adc\lpc_adc_interrupt" -O0 -fno-common -g3 -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/test2.d" -MT"source/test2.o" -MT"source/test2.d" -o "source/test2.o" "../source/test2.c"
+Finished building: ../source/test2.c
+ 
+Building target: lpcxpresso804_lpc_adc_interrupt.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="lpcxpresso804_lpc_adc_interrupt.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T lpcxpresso804_lpc_adc_interrupt_Debug.ld -o "lpcxpresso804_lpc_adc_interrupt.axf" ./utilities/fsl_assert.o ./utilities/fsl_debug_console.o ./utilities/fsl_str.o  ./startup/startup_lpc804.o  ./source/Ctimer.o ./source/fsl_adc_interrupt.o ./source/rmsCalc.o ./source/semihost_hardfault.o ./source/test.o ./source/test2.o  ./drivers/fsl_adc.o ./drivers/fsl_clock.o ./drivers/fsl_common.o ./drivers/fsl_common_arm.o ./drivers/fsl_ctimer.o ./drivers/fsl_gpio.o ./drivers/fsl_power.o ./drivers/fsl_reset.o ./drivers/fsl_swm.o ./drivers/fsl_syscon.o ./drivers/fsl_usart.o  ./device/system_LPC804.o  ./component/uart/fsl_adapter_miniusart.o  ./component/timer/fsl_adapter_ctimer.o  ./board/board.o ./board/clock_config.o ./board/pin_mux.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       14288 B      32640 B     43.77%
+      BOOT_FLASH:          0 GB        128 B      0.00%
+            SRAM:         792 B       4064 B     19.49%
+        IAP_SRAM:          0 GB         32 B      0.00%
+Finished building target: lpcxpresso804_lpc_adc_interrupt.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "lpcxpresso804_lpc_adc_interrupt.axf"; # arm-none-eabi-objcopy -v -O binary "lpcxpresso804_lpc_adc_interrupt.axf" "lpcxpresso804_lpc_adc_interrupt.bin" ; # checksum -p LPC804 -d "lpcxpresso804_lpc_adc_interrupt.bin";
+   text	   data	    bss	    dec	    hex	filename
+  14276	     12	    776	  15064	   3ad8	lpcxpresso804_lpc_adc_interrupt.axf
+ 
+
+12:10:29 Build Finished. 0 errors, 0 warnings. (took 938ms)
+

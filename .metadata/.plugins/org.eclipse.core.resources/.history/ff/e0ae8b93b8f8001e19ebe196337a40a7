@@ -1,0 +1,15 @@
+/*
+ * rmsCalc.c
+ *
+ *  Created on: 12-Apr-2024
+ *      Author: Tanishq
+ */
+#include <math.h>
+
+
+
+float rmsCalculation(int buffer){
+	float average = buffer/1000;
+	float rms = sqrt(average);
+	return rms;
+}

@@ -1,0 +1,83 @@
+#include "fsl_debug_console.h"
+#include "pin_mux.h"
+#include "board.h"
+#include "fsl_ctimer.h"
+
+#include <stdbool.h>
+
+#define CTIMER          CTIMER0
+#define CTIMER_MAT0_OUT kCTIMER_Match_0
+#define CTIMER_MAT1_OUT kCTIMER_Match_1
+#define CTIMER_CLK_FREQ CLOCK_GetFreq(kCLOCK_CoreSysClk)
+
+void ctimer_match0_callback(uint32_t flags);
+void ctimer_match1_callback(uint32_t flags);
+
+ctimer_callback_t ctimer_callback_table[] = {
+    ctimer_match0_callback, ctimer_match1_callback, NULL, NULL, NULL, NULL, NULL, NULL
+};
+
+static ctimer_match_config_t matchConfig0;
+static ctimer_match_config_t matchConfig1;
+
+// Function to be called when interrupt occurs
+void myFunction() {
+    // Add your code here
+    PRINTF("I am in the MyFunction()\r\n");
+}
+
+void ctimer_match1_callback(uint32_t flags)
+{
+    // Call your function
+    myFunction();
+    CTIMER_SetupMatch(CTIMER, CTIMER_MAT1_OUT, &matchConfig1);
+}
+
+void ctimer_match0_callback(uint32_t flags)
+{
+    // Call your function
+    myFunction();
+    CTIMER_SetupMatch(CTIMER, CTIMER_MAT0_OUT, &matchConfig0);
+}
+
+int main(void)
+{
+    ctimer_config_t config;
+
+    CLOCK_Select(BOARD_DEBUG_USART_CLK_ATTACH);
+    BOARD_InitBootPins();
+    BOARD_InitBootClocks();
+    BOARD_InitDebugConsole();
+
+    PRINTF("CTimer match example to toggle the output. \r\n");
+    PRINTF("This example uses interrupt to change the match period. \r\n");
+
+    CTIMER_GetDefaultConfig(&config);
+    CTIMER_Init(CTIMER, &config);
+
+    // Calculate match value for 500 ms interval
+    uint32_t matchValue = (CTIMER_CLK_FREQ / 2); // 500 ms = 1/2 second
+
+    matchConfig0.enableCounterReset = true;
+    matchConfig0.enableCounterStop  = false;
+    matchConfig0.matchValue         = matchValue;
+    matchConfig0.outControl         = kCTIMER_Output_Toggle;
+    matchConfig0.outPinInitState    = false;
+    matchConfig0.enableInterrupt    = true;
+
+    matchConfig1.enableCounterReset = true;
+    matchConfig1.enableCounterStop  = false;
+    matchConfig1.matchValue         = matchValue;
+    matchConfig1.outControl         = kCTIMER_Output_Toggle;
+    matchConfig1.outPinInitState    = true;
+    matchConfig1.enableInterrupt    = true;
+
+    CTIMER_RegisterCallBack(CTIMER, &ctimer_callback_table[0], kCTIMER_MultipleCallback);
+    CTIMER_SetupMatch(CTIMER, CTIMER_MAT0_OUT, &matchConfig0);
+    CTIMER_SetupMatch(CTIMER, CTIMER_MAT1_OUT, &matchConfig1);
+    CTIMER_StartTimer(CTIMER);
+
+    while (1)
+    {
+    }
+}

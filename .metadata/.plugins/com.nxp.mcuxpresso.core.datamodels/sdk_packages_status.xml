@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdk-packages>
+<package hash="1642581670000" path="C:\NXP\MCUXpressoIDE_11.8.0_1165\ide\plugins\com.nxp.mcuxpresso.sdk.sdk_2.x_lpcxpresso55s06_2.11.0.201911251446\sdks\92084c71864342199de085d65baa8e3c.zip" schema="manifest-schema/sdk_manifest_v3.13.xsd"/>
+<package hash="1690984722000" path="C:\NXP\MCUXpressoIDE_11.8.0_1165\ide\plugins\com.nxp.mcuxpresso.sdk.sdk_2.x_lpcxpresso804_2.13.0.201911251446\sdks\a2af39309f88bc5a5eae3446c5f67455.zip" schema="manifest-schema/sdk_manifest_v3.13.xsd"/>
+</sdk-packages>

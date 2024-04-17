@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?debugstack-directory version="1.0"?>
+<directory xmlns:xi="http://www.w3.org/2001/XInclude">
+   <xi:include href="file:/E:/VIIT%20Projects/AEL/8th%20Presentation/AEL%20Code/AEL_Company_File/AEL_Company_File/LPC%20code/display%20key%20adc%20code%20code/final%20ADC%20vrms%20and%20dispaly/new/.mcuxpressoide_packages_support/LPC55S06_support/LPC550x_S0x_dir_part.xml"/>
+   <xi:include href="file:/E:/VIIT%20Projects/AEL/8th%20Presentation/AEL%20Code/AEL_Company_File/AEL_Company_File/LPC%20code/display%20key%20adc%20code%20code/final%20ADC%20vrms%20and%20dispaly/new/.mcuxpressoide_packages_support/LPC804_support/LPC804_dir_part.xml"/>
+</directory>

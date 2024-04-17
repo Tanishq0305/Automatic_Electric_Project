@@ -1,0 +1,5 @@
+E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\drivers/fsl_clock.h:368:20:CLOCK_EnableClock	16	static
+E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\drivers/fsl_clock.h:379:20:CLOCK_DisableClock	16	static
+E:\VIIT Projects\AEL\8th Presentation\AEL Code\AEL_Company_File\AEL_Company_File\LPC code\display key adc code code\final ADC vrms and dispaly\new\lpcxpresso804_lpc_adc_interrupt\drivers/fsl_iocon.h:102:22:IOCON_PinMuxSet	24	static
+../board/pin_mux.c:37:6:BOARD_InitBootPins	8	static
+../board/pin_mux.c:62:6:BOARD_InitPins	16	static

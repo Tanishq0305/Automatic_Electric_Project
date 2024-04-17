@@ -1,0 +1,70 @@
+#include "fsl_debug_console.h"
+#include "pin_mux.h"
+#include "board.h"
+#include "fsl_ctimer.h"
+
+#define CTIMER          CTIMER0         /* Timer 0 */
+#define CTIMER_MAT0_OUT kCTIMER_Match_0 /* Match output 0 */
+#define CTIMER_CLK_FREQ CLOCK_GetFreq(kCLOCK_CoreSysClk)
+
+#define DESIRED_MILLISECONDS 1200 // Desired milliseconds
+
+/* Match Configuration */
+static ctimer_match_config_t matchConfig;
+
+/* Function prototype for ISR */
+void ctimer_callback(uint32_t flags);
+
+int main(void)
+{
+    ctimer_config_t config;
+
+    /* Init hardware*/
+    /* Attach 12 MHz clock to USART0 (debug console) */
+    CLOCK_Select(BOARD_DEBUG_USART_CLK_ATTACH);
+
+    BOARD_InitBootPins();
+    BOARD_InitBootClocks();
+    BOARD_InitDebugConsole();
+
+    PRINTF("CTimer match example to call ISR after a particular time interval.\r\n");
+
+    CTIMER_GetDefaultConfig(&config);
+    CTIMER_Init(CTIMER, &config);
+
+    /* Configure match settings */
+    matchConfig.enableCounterReset = true;
+    matchConfig.enableCounterStop  = false;
+    matchConfig.matchValue         = CTIMER_CLK_FREQ * 0.001 * DESIRED_MILLISECONDS; // Convert milliseconds to ticks
+    matchConfig.outControl         = kCTIMER_Output_NoAction;
+    matchConfig.outPinInitState    = false;
+    matchConfig.enableInterrupt    = true;
+
+    /* Register callback function */
+    CTIMER_RegisterCallBack(CTIMER, ctimer_callback, kCTIMER_MultipleCallback);
+
+    /* Setup match configuration */
+    CTIMER_SetupMatch(CTIMER, CTIMER_MAT0_OUT, &matchConfig);
+
+    /* Start the CTIMER */
+    CTIMER_StartTimer(CTIMER);
+
+    PRINTF("Waiting for %d milliseconds...\r\n", DESIRED_MILLISECONDS);
+
+    while (1)
+    {
+        // Main loop
+    }
+}
+
+/* ISR callback function */
+void ctimer_callback(uint32_t flags)
+{
+    // Print a message when the ISR is executed
+    PRINTF("ISR (ctimer_callback) executed!\r\n");
+
+    // Your ISR code here
+
+    // Print a message when the match event occurs
+    PRINTF("Match event occurred!\r\n");
+}
